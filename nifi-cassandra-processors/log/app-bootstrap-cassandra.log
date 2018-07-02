@@ -1,0 +1,114 @@
+INFO  | 2018-06-19 15:20:10 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396410083
+INFO  | 2018-06-19 15:20:10 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1529396410118, elapsed time: 35
+INFO  | 2018-06-19 15:20:10 | [pool-3-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396410130
+INFO  | 2018-06-19 15:20:10 | [pool-4-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396410138
+INFO  | 2018-06-19 15:20:10 | [pool-5-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396410145
+INFO  | 2018-06-19 15:20:10 | [pool-6-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396410154
+INFO  | 2018-06-19 15:20:10 | [pool-7-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396410163
+INFO  | 2018-06-19 15:20:10 | [pool-7-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1529396410166, elapsed time: 3
+INFO  | 2018-06-19 15:20:10 | [pool-8-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396410172
+INFO  | 2018-06-19 15:20:10 | [pool-9-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410188
+INFO  | 2018-06-19 15:20:10 | [pool-9-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1529396410205, elapsed time: 17
+INFO  | 2018-06-19 15:20:10 | [pool-10-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410233
+INFO  | 2018-06-19 15:20:10 | [pool-10-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1529396410278, elapsed time: 45
+INFO  | 2018-06-19 15:20:10 | [pool-11-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410282
+INFO  | 2018-06-19 15:20:10 | [pool-12-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410288
+INFO  | 2018-06-19 15:20:10 | [pool-13-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410302
+INFO  | 2018-06-19 15:20:10 | [pool-14-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410310
+INFO  | 2018-06-19 15:20:10 | [pool-15-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410324
+INFO  | 2018-06-19 15:20:10 | [pool-15-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1529396410330, elapsed time: 6
+INFO  | 2018-06-19 15:20:10 | [pool-16-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410338
+INFO  | 2018-06-19 15:20:10 | [pool-16-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1529396410341, elapsed time: 3
+INFO  | 2018-06-19 15:20:10 | [pool-17-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410356
+INFO  | 2018-06-19 15:20:10 | [pool-17-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1529396410361, elapsed time: 5
+INFO  | 2018-06-19 15:20:10 | [pool-18-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410366
+INFO  | 2018-06-19 15:20:10 | [pool-19-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410370
+INFO  | 2018-06-19 15:20:10 | [pool-20-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410377
+INFO  | 2018-06-19 15:20:10 | [pool-21-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396410385
+INFO  | 2018-06-19 15:20:44 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396444155
+INFO  | 2018-06-19 15:20:44 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1529396444192, elapsed time: 37
+INFO  | 2018-06-19 15:20:44 | [pool-3-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396444203
+INFO  | 2018-06-19 15:20:44 | [pool-4-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396444212
+INFO  | 2018-06-19 15:20:44 | [pool-5-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396444219
+INFO  | 2018-06-19 15:20:44 | [pool-6-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396444230
+INFO  | 2018-06-19 15:20:44 | [pool-7-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396444239
+INFO  | 2018-06-19 15:20:44 | [pool-7-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1529396444242, elapsed time: 3
+INFO  | 2018-06-19 15:20:44 | [pool-8-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1529396444248
+INFO  | 2018-06-19 15:20:44 | [pool-9-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444265
+INFO  | 2018-06-19 15:20:44 | [pool-9-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1529396444282, elapsed time: 17
+INFO  | 2018-06-19 15:20:44 | [pool-10-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444313
+INFO  | 2018-06-19 15:20:44 | [pool-10-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1529396444357, elapsed time: 44
+INFO  | 2018-06-19 15:20:44 | [pool-11-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444362
+INFO  | 2018-06-19 15:20:44 | [pool-12-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444368
+INFO  | 2018-06-19 15:20:44 | [pool-13-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444375
+INFO  | 2018-06-19 15:20:44 | [pool-14-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444380
+INFO  | 2018-06-19 15:20:44 | [pool-15-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444390
+INFO  | 2018-06-19 15:20:44 | [pool-15-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1529396444394, elapsed time: 4
+INFO  | 2018-06-19 15:20:44 | [pool-16-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444403
+INFO  | 2018-06-19 15:20:44 | [pool-16-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1529396444407, elapsed time: 4
+INFO  | 2018-06-19 15:20:44 | [pool-17-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444421
+INFO  | 2018-06-19 15:20:44 | [pool-17-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1529396444425, elapsed time: 4
+INFO  | 2018-06-19 15:20:44 | [pool-18-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444430
+INFO  | 2018-06-19 15:20:44 | [pool-19-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444436
+INFO  | 2018-06-19 15:20:44 | [pool-20-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444441
+INFO  | 2018-06-19 15:20:44 | [pool-21-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1529396444446
+INFO  | 2018-06-27 10:50:44 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530071444380
+INFO  | 2018-06-27 10:50:44 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1530071444482, elapsed time: 102
+INFO  | 2018-06-27 11:24:07 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530073447417
+INFO  | 2018-06-27 11:24:07 | [pool-2-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-27 11:24:58 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1530073498481, elapsed time: 51064
+INFO  | 2018-06-27 11:25:31 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530073531238
+INFO  | 2018-06-27 11:25:31 | [pool-2-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-27 11:25:31 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1530073531272, elapsed time: 34
+INFO  | 2018-06-27 11:25:31 | [pool-3-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530073531283
+INFO  | 2018-06-27 11:25:31 | [pool-3-thread-1] ? (:) - CQL: UPDATE users SET cities = [ 'New York', 'Los Angeles' ] WHERE user_id = 'coast2coast';
+INFO  | 2018-06-27 11:25:31 | [pool-4-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530073531291
+INFO  | 2018-06-27 11:25:31 | [pool-4-thread-1] ? (:) - CQL: UPDATE users SET cities = [ 'New York', 'Los Angeles' ] WHERE user_id = 'coast2coast';
+INFO  | 2018-06-27 11:25:31 | [pool-5-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530073531298
+INFO  | 2018-06-27 11:25:31 | [pool-5-thread-1] ? (:) - CQL: UPDATE users SET cities = [ 'New York', 'Los Angeles' ] WHERE user_id = 'coast2coast';
+INFO  | 2018-06-27 11:25:31 | [pool-6-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530073531308
+INFO  | 2018-06-27 11:25:31 | [pool-6-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-27 11:25:31 | [pool-7-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530073531316
+INFO  | 2018-06-27 11:25:31 | [pool-7-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-27 11:25:31 | [pool-7-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1530073531319, elapsed time: 3
+INFO  | 2018-06-27 11:25:31 | [pool-8-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530073531325
+INFO  | 2018-06-27 11:25:31 | [pool-8-thread-1] ? (:) - CQL: UPDATE users SET cities = [ 'New York', 'Los Angeles' ] WHERE user_id = 'coast2coast';
+INFO  | 2018-06-27 11:25:31 | [pool-9-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531341
+INFO  | 2018-06-27 11:25:31 | [pool-9-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1530073531367, elapsed time: 26
+INFO  | 2018-06-27 11:25:31 | [pool-10-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531399
+INFO  | 2018-06-27 11:25:31 | [pool-10-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1530073531456, elapsed time: 57
+INFO  | 2018-06-27 11:25:31 | [pool-11-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531460
+INFO  | 2018-06-27 11:25:31 | [pool-12-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531466
+INFO  | 2018-06-27 11:25:31 | [pool-13-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531473
+INFO  | 2018-06-27 11:25:31 | [pool-14-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531478
+INFO  | 2018-06-27 11:25:31 | [pool-15-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531488
+INFO  | 2018-06-27 11:25:31 | [pool-15-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1530073531492, elapsed time: 4
+INFO  | 2018-06-27 11:25:31 | [pool-16-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531499
+INFO  | 2018-06-27 11:25:31 | [pool-16-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1530073531503, elapsed time: 4
+INFO  | 2018-06-27 11:25:31 | [pool-17-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531514
+INFO  | 2018-06-27 11:25:31 | [pool-17-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, process tranfer success, time 1530073531517, elapsed time: 3
+INFO  | 2018-06-27 11:25:31 | [pool-18-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531522
+INFO  | 2018-06-27 11:25:31 | [pool-19-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531526
+INFO  | 2018-06-27 11:25:31 | [pool-20-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531531
+INFO  | 2018-06-27 11:25:31 | [pool-21-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.QueryCassandraTest$MockQueryCassandra, Trigger time: 1530073531536
+INFO  | 2018-06-27 16:25:53 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530091553671
+INFO  | 2018-06-27 16:25:53 | [pool-2-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-27 16:29:49 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1530091789040, elapsed time: 235369
+INFO  | 2018-06-27 16:30:46 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530091846500
+INFO  | 2018-06-27 16:30:46 | [pool-2-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-27 17:08:10 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530094090381
+INFO  | 2018-06-27 17:08:10 | [pool-2-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-28 14:14:31 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530170071817
+INFO  | 2018-06-28 14:14:31 | [pool-2-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-28 14:16:58 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1530170218527, elapsed time: 146710
+INFO  | 2018-06-28 16:35:55 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530178555439
+INFO  | 2018-06-28 16:35:55 | [pool-2-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-28 16:38:57 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1530178737104, elapsed time: 181665
+INFO  | 2018-06-28 16:39:12 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530178752604
+INFO  | 2018-06-28 16:39:12 | [pool-2-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-28 16:45:18 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1530179118382, elapsed time: 365778
+INFO  | 2018-06-28 16:45:28 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530179128890
+INFO  | 2018-06-28 16:45:28 | [pool-2-thread-1] ? (:) - CQL: INSERT INTO users (user_id, first_name, last_name, properties, bits, scaleset, largenum, scale, byteobject, ts) VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+INFO  | 2018-06-28 17:11:01 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, process tranfer success, time 1530180661024, elapsed time: 1532134
+INFO  | 2018-06-29 10:11:19 | [pool-2-thread-1] ? (:) - dev.at.mikorn.processors.cassandra.PutCassandraQLTest$MockPutCassandraQL, Trigger time: 1530241879885
+INFO  | 2018-06-29 10:11:19 | [pool-2-thread-1] ? (:) - CQL: UPDATE users SET cities = [ 'New York', 'Los Angeles' ] WHERE user_id = 'coast2coast';
