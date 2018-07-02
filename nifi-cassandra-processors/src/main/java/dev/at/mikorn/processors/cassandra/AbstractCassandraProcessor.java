@@ -130,6 +130,15 @@ public abstract class AbstractCassandraProcessor extends AbstractProcessor {
             .addValidator(StandardValidators.CHARACTER_SET_VALIDATOR)
             .build();
 
+    public static final PropertyDescriptor PROP_NUM_OF_PARAMS = new PropertyDescriptor
+            .Builder().name("Number of parameter")
+            .displayName("Number of parameter")
+            .description("Number of parameter")
+            .required(true)
+            .defaultValue("4")
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .build();
+
     static List<PropertyDescriptor> descriptors = new ArrayList<>();
 
     static {
@@ -141,6 +150,7 @@ public abstract class AbstractCassandraProcessor extends AbstractProcessor {
         descriptors.add(PASSWORD);
         descriptors.add(CONSISTENCY_LEVEL);
         descriptors.add(CHARSET);
+        descriptors.add(PROP_NUM_OF_PARAMS);
     }
 
     protected final AtomicReference<Cluster> cluster = new AtomicReference<>(null);

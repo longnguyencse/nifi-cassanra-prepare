@@ -102,15 +102,6 @@ public class MikornPutCassandraQL extends AbstractCassandraProcessor {
             .addValidator(StandardValidators.TIME_PERIOD_VALIDATOR)
             .build();
 
-    public static final PropertyDescriptor PROP_NUM_OF_PARAMS = new PropertyDescriptor
-            .Builder().name("Number of parameter")
-            .displayName("Number of parameter")
-            .description("Number of parameter")
-            .required(true)
-            .defaultValue("4")
-            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
-            .build();
-
     private final static List<PropertyDescriptor> propertyDescriptors;
 
     // Relationships
@@ -196,9 +187,14 @@ public class MikornPutCassandraQL extends AbstractCassandraProcessor {
         final long statementTimeout = context.getProperty(STATEMENT_TIMEOUT).evaluateAttributeExpressions(flowFile).asTimePeriod(TimeUnit.MILLISECONDS);
         final Charset charset = Charset.forName(context.getProperty(CHARSET).evaluateAttributeExpressions(flowFile).getValue());
 
+        final int numOfParam = context.getProperty(PROP_NUM_OF_PARAMS).evaluateAttributeExpressions(flowFile).asInteger();
+
         // The documentation for the driver recommends the session remain open the entire time the processor is running
         // and states that it is thread-safe. This is why connectionSession is not in a try-with-resources.
         final Session connectionSession = cassandraSession.get();
+
+        // number for prepare statement lesser number of loop for bind parameter
+        int numOfLoopBound = 0;
 
         String cql = getCQL(session, flowFile, charset);
         try {
@@ -206,11 +202,17 @@ public class MikornPutCassandraQL extends AbstractCassandraProcessor {
             logger4j.info(String.format("CQL: %s", cql));
             BoundStatement boundStatement = statement.bind();
 
+
             Map<String, String> attributes = flowFile.getAttributes();
             for (final Map.Entry<String, String> entry : attributes.entrySet()) {
                 final String key = entry.getKey();
                 final Matcher matcher = CQL_TYPE_ATTRIBUTE_PATTERN.matcher(key);
                 // check number of attr
+                // check number of parameter, if number of parameter lesser than number of loop , break for
+                if (numOfParam < numOfLoopBound + 1) {
+                    break;
+                }
+
                 if (matcher.matches()) {
                     final int parameterIndex = Integer.parseInt(matcher.group(1));
                     String paramType = entry.getValue();
@@ -228,6 +230,8 @@ public class MikornPutCassandraQL extends AbstractCassandraProcessor {
                         throw new ProcessException("The value of the " + valueAttrName + " is '" + parameterValue
                                 + "', which cannot be converted into the necessary data type: " + paramType, e);
                     }
+
+                    numOfLoopBound++;
                 }
             }
 

@@ -16,16 +16,8 @@
  */
 package dev.at.mikorn.processors.cassandra;
 
-import com.datastax.driver.core.ColumnDefinitions;
-import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.ResultSetFuture;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.exceptions.AuthenticationException;
-import com.datastax.driver.core.exceptions.NoHostAvailableException;
-import com.datastax.driver.core.exceptions.QueryExecutionException;
-import com.datastax.driver.core.exceptions.QueryValidationException;
+import com.datastax.driver.core.*;
+import com.datastax.driver.core.exceptions.*;
 import org.apache.avro.Schema;
 import org.apache.avro.SchemaBuilder;
 import org.apache.avro.file.DataFileWriter;
@@ -60,6 +52,7 @@ import org.apache.nifi.util.StopWatch;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -75,6 +68,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Tags({"cassandra", "cql", "select"})
 @EventDriven
@@ -90,8 +85,20 @@ public class MikornQueryCassandra extends AbstractCassandraProcessor {
 
     public static final String AVRO_FORMAT = "Avro";
     public static final String JSON_FORMAT = "JSON";
+    private static final Pattern CQL_TYPE_ATTRIBUTE_PATTERN = Pattern.compile("cql\\.args\\.(\\d+)\\.type");
+
+    // Matches on top-level type (primitive types like text,int) and also for collections (like list<boolean> and map<float,double>)
+    private static final Pattern CQL_TYPE_PATTERN = Pattern.compile("([^<]+)(<([^,>]+)(,([^,>]+))*>)?");
 
     public static final String RESULT_ROW_COUNT = "executecql.row.count";
+
+    public static final PropertyDescriptor CQL_SELECT_PREPARE = new PropertyDescriptor.Builder()
+            .name("CQL select query for prepare")
+            .description("CQL select query for prepare")
+            .required(false)
+            .expressionLanguageSupported(false)
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .build();
 
     public static final PropertyDescriptor CQL_SELECT_QUERY = new PropertyDescriptor.Builder()
             .name("CQL select query")
@@ -99,6 +106,7 @@ public class MikornQueryCassandra extends AbstractCassandraProcessor {
             .required(true)
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .expressionLanguageSupported(true)
+            .defaultValue("Don't use")
             .build();
 
     public static final PropertyDescriptor QUERY_TIMEOUT = new PropertyDescriptor.Builder()
@@ -161,6 +169,7 @@ public class MikornQueryCassandra extends AbstractCassandraProcessor {
         _propertyDescriptors.add(QUERY_TIMEOUT);
         _propertyDescriptors.add(FETCH_SIZE);
         _propertyDescriptors.add(OUTPUT_FORMAT);
+        _propertyDescriptors.add(CQL_SELECT_PREPARE);
         propertyDescriptors = Collections.unmodifiableList(_propertyDescriptors);
 
         Set<Relationship> _relationships = new HashSet<>();
@@ -224,6 +233,12 @@ public class MikornQueryCassandra extends AbstractCassandraProcessor {
 
         final ComponentLog logger = getLogger();
         final String selectQuery = context.getProperty(CQL_SELECT_QUERY).evaluateAttributeExpressions(fileToProcess).getValue();
+        // Get cql prepare statement
+        final String cqlPrepare = context.getProperty(CQL_SELECT_PREPARE).getValue();
+        final int numOfParam = context.getProperty(PROP_NUM_OF_PARAMS).evaluateAttributeExpressions(fileToProcess).asInteger();
+
+
+
         final long queryTimeout = context.getProperty(QUERY_TIMEOUT).evaluateAttributeExpressions(fileToProcess).asTimePeriod(TimeUnit.MILLISECONDS);
         final String outputFormat = context.getProperty(OUTPUT_FORMAT).getValue();
         final Charset charset = Charset.forName(context.getProperty(CHARSET).evaluateAttributeExpressions(fileToProcess).getValue());
@@ -238,7 +253,48 @@ public class MikornQueryCassandra extends AbstractCassandraProcessor {
             // and states that it is thread-safe. This is why connectionSession is not in a try-with-resources.
             final Session connectionSession = cassandraSession.get();
             // TODO: custom code for prepare statement
-            final ResultSetFuture queryFuture = connectionSession.executeAsync(selectQuery);
+//            final ResultSetFuture queryFuture = connectionSession.executeAsync(selectQuery);
+            // code preoare statement
+
+            PreparedStatement statement = connectionSession.prepare(cqlPrepare);
+            logger4j.info(String.format("CQL Query: %s", cqlPrepare));
+            BoundStatement boundStatement = statement.bind();
+            Map<String, String> attributes = fileToProcess.getAttributes();
+            // number for prepare statement lesser number of loop for bind parameter
+            int numOfLoopBound = 0;
+
+            for (final Map.Entry<String, String> entry : attributes.entrySet()) {
+                final String key = entry.getKey();
+                final Matcher matcher = CQL_TYPE_ATTRIBUTE_PATTERN.matcher(key);
+                // check number of attr
+                // check number of parameter, if number of parameter lesser than number of loop , break for
+                if (numOfParam < numOfLoopBound + 1) {
+                    break;
+                }
+
+                if (matcher.matches()) {
+                    final int parameterIndex = Integer.parseInt(matcher.group(1));
+                    String paramType = entry.getValue();
+                    if (org.apache.nifi.util.StringUtils.isEmpty(paramType)) {
+                        throw new ProcessException("Value of the " + key + " attribute is null or empty, it must contain a valid value");
+                    }
+
+                    paramType = paramType.trim();
+                    final String valueAttrName = "cql.args." + parameterIndex + ".value";
+                    final String parameterValue = attributes.get(valueAttrName);
+
+                    try {
+                        setStatementObject(boundStatement, parameterIndex - 1, valueAttrName, parameterValue, paramType);
+                    } catch (final InvalidTypeException | IllegalArgumentException e) {
+                        throw new ProcessException("The value of the " + valueAttrName + " is '" + parameterValue
+                                + "', which cannot be converted into the necessary data type: " + paramType, e);
+                    }
+
+                    numOfLoopBound++;
+                }
+            }
+            final ResultSetFuture queryFuture = connectionSession.executeAsync(boundStatement);
+
             final AtomicLong nrOfRows = new AtomicLong(0L);
 
             fileToProcess = session.write(fileToProcess, new OutputStreamCallback() {
@@ -331,6 +387,100 @@ public class MikornQueryCassandra extends AbstractCassandraProcessor {
         }
     }
 
+    protected void setStatementObject(final BoundStatement statement, final int paramIndex, final String attrName,
+                                      final String paramValue, final String paramType) throws IllegalArgumentException {
+        if (paramValue == null) {
+            statement.setToNull(paramIndex);
+            return;
+        } else if (paramType == null) {
+            throw new IllegalArgumentException("Parameter type for " + attrName + " cannot be null");
+
+        } else {
+            // Parse the top-level type and any parameterized types (for collections)
+            final Matcher matcher = CQL_TYPE_PATTERN.matcher(paramType);
+
+            // If the matcher doesn't match, this should fall through to the exception at the bottom
+            if (matcher.find() && matcher.groupCount() > 1) {
+                String mainTypeString = matcher.group(1).toLowerCase();
+                DataType mainType = getPrimitiveDataTypeFromString(mainTypeString);
+                if (mainType != null) {
+                    TypeCodec typeCodec = codecRegistry.codecFor(mainType);
+
+                    // Need the right statement.setXYZ() method
+                    if (mainType.equals(DataType.ascii())
+                            || mainType.equals(DataType.text())
+                            || mainType.equals(DataType.varchar())
+                            || mainType.equals(DataType.timeuuid())
+                            || mainType.equals(DataType.uuid())
+                            || mainType.equals(DataType.inet())
+                            || mainType.equals(DataType.varint())) {
+                        // These are strings, so just use the paramValue
+                        statement.setString(paramIndex, paramValue);
+
+                    } else if (mainType.equals(DataType.cboolean())) {
+                        statement.setBool(paramIndex, (boolean) typeCodec.parse(paramValue));
+
+                    } else if (mainType.equals(DataType.cint())) {
+                        statement.setInt(paramIndex, (int) typeCodec.parse(paramValue));
+
+                    } else if (mainType.equals(DataType.bigint())
+                            || mainType.equals(DataType.counter())) {
+                        statement.setLong(paramIndex, (long) typeCodec.parse(paramValue));
+
+                    } else if (mainType.equals(DataType.cfloat())) {
+                        statement.setFloat(paramIndex, (float) typeCodec.parse(paramValue));
+
+                    } else if (mainType.equals(DataType.cdouble())) {
+                        statement.setDouble(paramIndex, (double) typeCodec.parse(paramValue));
+
+                    } else if (mainType.equals(DataType.blob())) {
+                        statement.setBytes(paramIndex, (ByteBuffer) typeCodec.parse(paramValue));
+
+                    } else if (mainType.equals(DataType.timestamp())) {
+                        statement.setTimestamp(paramIndex, (Date) typeCodec.parse(paramValue));
+                    }
+                    return;
+                } else {
+                    // Get the first parameterized type
+                    if (matcher.groupCount() > 2) {
+                        String firstParamTypeName = matcher.group(3);
+                        DataType firstParamType = getPrimitiveDataTypeFromString(firstParamTypeName);
+                        if (firstParamType == null) {
+                            throw new IllegalArgumentException("Nested collections are not supported");
+                        }
+
+                        // Check for map type
+                        if (DataType.Name.MAP.toString().equalsIgnoreCase(mainTypeString)) {
+                            if (matcher.groupCount() > 4) {
+                                String secondParamTypeName = matcher.group(5);
+                                DataType secondParamType = getPrimitiveDataTypeFromString(secondParamTypeName);
+                                DataType mapType = DataType.map(firstParamType, secondParamType);
+                                statement.setMap(paramIndex, (Map) codecRegistry.codecFor(mapType).parse(paramValue));
+                                return;
+                            }
+                        } else {
+                            // Must be set or list
+                            if (DataType.Name.SET.toString().equalsIgnoreCase(mainTypeString)) {
+                                DataType setType = DataType.set(firstParamType);
+                                statement.setSet(paramIndex, (Set) codecRegistry.codecFor(setType).parse(paramValue));
+                                return;
+                            } else if (DataType.Name.LIST.toString().equalsIgnoreCase(mainTypeString)) {
+                                DataType listType = DataType.list(firstParamType);
+                                statement.setList(paramIndex, (List) codecRegistry.codecFor(listType).parse(paramValue));
+                                return;
+                            }
+                        }
+                    } else {
+                        throw new IllegalArgumentException(
+                                "Collection type " + mainTypeString + " needs parameterized type(s), such as set<text>");
+                    }
+
+                }
+            }
+
+        }
+        throw new IllegalArgumentException("Cannot create object of type " + paramType + " using input " + paramValue);
+    }
 
     @OnUnscheduled
     public void stop() {
